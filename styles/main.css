@@ -933,6 +933,9 @@
     .shop-frame {
       width: 100%;
       max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
     }
 
     .shop-header {
@@ -1019,11 +1022,32 @@
       margin: 0 0 14px;
     }
 
+    #shop-back {
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
     .shop-message.error {
       color: var(--blood);
     }
 
     @media (max-width:560px) {
+      #screen-shop {
+        align-items: stretch;
+        overflow-y: auto;
+      }
+
+      .shop-frame {
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+      }
+
+      .shop-header {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
       .shop-item {
         flex-wrap: wrap;
       }
@@ -1031,6 +1055,11 @@
       .shop-item-owned {
         order: 3;
         width: 100%;
+        text-align: left;
+        margin-left: 52px;
+      }
+
+      .shop-message {
         text-align: left;
       }
     }
