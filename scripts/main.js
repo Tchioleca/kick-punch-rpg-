@@ -1076,6 +1076,31 @@
         }, 100);
       }
 
+      function playBattleMusic() {
+        const audio = document.getElementById('battle-music');
+        if (!audio) return;
+        audio.volume = 0;
+        audio.currentTime = 0;
+        audio.play().catch(() => { });
+        let vol = 0;
+        const fadeIn = setInterval(() => {
+          vol = Math.min(0.85, vol + 0.04);
+          audio.volume = vol;
+          if (vol >= 0.85) clearInterval(fadeIn);
+        }, 100);
+      }
+
+      function stopBattleMusic() {
+        const audio = document.getElementById('battle-music');
+        if (!audio || audio.paused) return;
+        let vol = audio.volume;
+        const fadeOut = setInterval(() => {
+          vol = Math.max(0, vol - 0.05);
+          audio.volume = vol;
+          if (vol <= 0) { clearInterval(fadeOut); audio.pause(); audio.currentTime = 0; }
+        }, 100);
+      }
+
       function startNarrator() {
         // Create the character first so stats are ready
         state.player = createCharacter();
@@ -1789,6 +1814,7 @@
         refreshBattleUI();
         saveGame();
         showScreen('battle');
+        if (!isTraining) playBattleMusic();
       }
 
       // Switches between the main action menu and the Sword / Item sub-menus.
@@ -2282,6 +2308,7 @@
 
       function endBattle() {
         state.inBattle = false;
+        stopBattleMusic();
         refreshWorldMap();
         showScreen('worldmap');
       }
