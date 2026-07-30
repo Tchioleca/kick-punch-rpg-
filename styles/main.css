@@ -422,16 +422,19 @@
     .panel-modal {
       display: none;
       position: absolute;
-      top: 0;
+      top: auto;
       right: 54px;
-      bottom: 0;
+      bottom: 12px;
       width: 260px;
+      max-height: calc(100% - 68px);
       z-index: 50;
       background: var(--parchment);
       border: 2px solid var(--ink);
       border-right: none;
+      border-bottom: none;
       flex-direction: column;
       overflow-y: auto;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
     }
 
     .panel-modal.open {
@@ -915,9 +918,10 @@
 
       .panel-modal {
         top: auto;
-        bottom: 54px;
         right: 0;
+        bottom: 54px;
         width: 100%;
+        max-height: calc(100% - 84px);
         border: 2px solid var(--ink);
         border-bottom: none;
       }
