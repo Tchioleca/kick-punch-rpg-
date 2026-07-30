@@ -26,7 +26,7 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100%;
       background: var(--ink);
       color: var(--parchment);
       font-family: 'EB Garamond', serif;
@@ -66,6 +66,10 @@
       overflow: hidden;
       min-height: 560px;
       height: min(100dvh - 48px, 760px);
+    }
+
+    #app.opening {
+      overflow: visible;
     }
 
     #app::before {
@@ -194,6 +198,8 @@
       text-align: center;
       gap: 10px;
       overflow-y: auto;
+      max-height: 100%;
+      padding-bottom: 20px;
     }
 
     .game-title {
@@ -835,15 +841,17 @@
         padding: 0;
         align-items: stretch;
         justify-content: flex-start;
+        overflow: auto;
       }
 
       #app {
         width: 100vw;
         max-width: none;
-        height: 100dvh;
         min-height: 100dvh;
+        height: auto;
         border-radius: 0;
         box-shadow: none;
+        overflow: visible;
       }
 
       #app::before {
@@ -852,7 +860,8 @@
 
       .screen {
         padding: 16px;
-        min-height: 0;
+        min-height: auto;
+        overflow-y: auto;
       }
 
       #screen-title {
