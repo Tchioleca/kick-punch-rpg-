@@ -193,11 +193,13 @@
       justify-content: center;
       text-align: center;
       gap: 10px;
+      overflow-y: auto;
     }
 
     .game-title {
       font-family: 'Cinzel Decorative';
-      font-size: 3rem;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.1;
       color: var(--blood);
       text-shadow: 1px 1px 0 var(--gold), 0 2px 8px rgba(0, 0, 0, 0.15);
       margin: 0;
@@ -207,14 +209,14 @@
       font-style: italic;
       color: var(--leather);
       margin: 0 0 30px 0;
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 2.3vw, 1.05rem);
     }
 
     .title-actions {
       display: flex;
       flex-direction: column;
       gap: 14px;
-      width: 240px;
+      width: min(100%, 240px);
     }
 
     .save-hint {
@@ -854,7 +856,9 @@
       }
 
       #screen-title {
-        padding: 20px 16px;
+        padding: 20px 16px 28px;
+        justify-content: flex-start;
+        padding-top: max(24px, 6vh);
       }
 
       #screen-shop {
